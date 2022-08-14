@@ -9,29 +9,37 @@ let getComputerChoice= function(){
     else if(random==2){
         return "scissor";
     }
-}    
+};    
 
 let playRound =function(computerSelection,playerSelection){
+    if(playerSelection=="scissors"){
+        playerSelection="scissor";
+    }
     if(     (playerSelection=="rock" && computerSelection=="scissor")||
             (playerSelection=="paper" && computerSelection=="rock") ||
-            ((playerSelection=="scissor"||playerSelection=="scissors")&&computerSelection=="paper") ){  
+            (playerSelection=="scissor"&&computerSelection=="paper") ){  
             return 2; 
     }
 
     else if( (computerSelection=="rock" && playerSelection=="scissor")||
              (computerSelection=="paper" && playerSelection=="rock") ||
-             ((computerSelection=="scissor"||playerSelection=="scissors")&&playerSelection=="paper") )  {
+             (computerSelection=="scissor"&&playerSelection=="paper") )  {
+
             return 1;    
     } 
     else if (playerSelection==computerSelection){
             return 0;
     }
-    }   
+    else{
+        return 4;
+    }
+}; 
+
 
 function game(){
     let computerScore=0, playerScore=0, msg="";
     for(let x=0;x<20;x++){
-        let userChoice=prompt("Rock, Paper or Scissor?").toLowerCase();
+        let userChoice=prompt("Rock, Paper, Scissors?").toLowerCase();
         let randomElement=getComputerChoice();
         let roundScore=playRound(randomElement, userChoice);
       if(roundScore==2){
@@ -44,6 +52,9 @@ function game(){
         }  
         else if(roundScore==0){
             msg= (`Tie!`);
+        }
+        else if(roundScore==4){
+            msg= (`${userChoice} is not a valid weapon.\nTry again with rock, paper, or scissors`);
         }          
 
         alert   (
