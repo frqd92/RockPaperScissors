@@ -38,7 +38,7 @@ let playRound =function(computerSelection,playerSelection){
 
 function game(){
     let computerScore=0, playerScore=0, tieScore=0, msg="";
-    for(let x=0;x<20;x++){
+    for(let x=0;x<30;x++){
         let userChoice=prompt("Rock, Paper, Scissors?").toLowerCase();
         let randomElement=getComputerChoice();
         let roundScore=playRound(randomElement, userChoice);
