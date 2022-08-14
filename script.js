@@ -15,48 +15,45 @@ let playRound =function(computerSelection,playerSelection){
     if(     (playerSelection=="rock" && computerSelection=="scissor")||
             (playerSelection=="paper" && computerSelection=="rock") ||
             ((playerSelection=="scissor"||playerSelection=="scissors")&&computerSelection=="paper") ){  
-
-            let winMsg = `You win! ${playerSelection} beats ${computerSelection}`;  
-            return winMsg; 
-
+            return 2; 
     }
 
     else if( (computerSelection=="rock" && playerSelection=="scissor")||
              (computerSelection=="paper" && playerSelection=="rock") ||
              ((computerSelection=="scissor"||playerSelection=="scissors")&&playerSelection=="paper") )  {
-
-            let loseMsg = `You lose! ${computerSelection} beats ${playerSelection}`;
-            return loseMsg;    
+            return 1;    
     } 
     else if (playerSelection==computerSelection){
-            let tieMsg= `It's a tie`;
-            return tieMsg;
+            return 0;
     }
     }   
 
 function game(){
-    let computerScore=0, playerScore=0;
+    let computerScore=0, playerScore=0, msg="";
     for(let x=0;x<20;x++){
-
         let userChoice=prompt("Rock, Paper or Scissor?").toLowerCase();
         let randomElement=getComputerChoice();
         let roundScore=playRound(randomElement, userChoice);
-
-   
-      if(roundScore=="Rock beats scissors! You win!" || roundScore== "Paper beats rock! You win!" || roundScore==`Scissors beats paper! You win!`){
+      if(roundScore==2){
             playerScore++;
-
+            msg=`You win! ${userChoice} beats ${randomElement} `;
         }
-        else if(roundScore=="Paper beats rock! You lose!" || roundScore=="Scissors beat paper! You lose!" || roundScore=="Rock beats scissors! You lose!"){
+        else if(roundScore==1){
             computerScore++;
+            msg=`You lose! ${randomElement} beats ${userChoice}`;
         }  
+        else if(roundScore==0){
+            msg= (`Tie!`);
+        }          
 
-        alert("Your choice: "+ userChoice
-        +"\nComputer Choice: " + randomElement
-        + "\n" + roundScore
-        + "\nComputer score: " + computerScore
-        + "         Your Score: " + playerScore
-        );
+        alert   (
+                "Your choice: "+ userChoice
+                +"          Computer Choice: " + randomElement
+                +"\n" + msg
+                + "\nComputer score: " + computerScore
+                + "         Your Score: " + playerScore
+                );
+
         if(playerScore==5){
             alert("You win the whole game!");
             break;
@@ -70,7 +67,5 @@ function game(){
     alert("Final Score\nYou: " + playerScore + "\nComputer: " + computerScore);
 }
 alert("Rock.Paper.Scissors. First to 5 wins!")
-//game();
+game();
 
-let userPick = prompt("enter choice:");
-alert(playRound(getComputerChoice(), userPick));
