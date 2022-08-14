@@ -37,7 +37,7 @@ let playRound =function(computerSelection,playerSelection){
 
 
 function game(){
-    let computerScore=0, playerScore=0, msg="";
+    let computerScore=0, playerScore=0, tieScore=0, msg="";
     for(let x=0;x<20;x++){
         let userChoice=prompt("Rock, Paper, Scissors?").toLowerCase();
         let randomElement=getComputerChoice();
@@ -51,6 +51,7 @@ function game(){
             msg=`You lose! ${randomElement} beats ${userChoice}`;
         }  
         else if(roundScore==0){
+            tieScore++;
             msg= (`Tie!`);
         }
         else if(roundScore==4){
@@ -63,6 +64,7 @@ function game(){
                 +"\n" + msg
                 + "\nComputer score: " + computerScore
                 + "         Your Score: " + playerScore
+                +"          Ties: " + tieScore
                 );
 
         if(playerScore==5){
