@@ -12,45 +12,27 @@ let getComputerChoice= function(){
 }    
 
 let playRound =function(computerSelection,playerSelection){
-    if(playerSelection=="rock"){
-        if(computerSelection=="rock"){
-            return `It's a tie!`;
-  
-        }
-        else if(computerSelection=="paper"){
-            return "Paper beats rock! You lose!";
-        }
-        else if(computerSelection=="scissor"||computerSelection=="scissors"){
-            return "Rock beats scissors! You win!";
-        }    
+    if(     (playerSelection=="rock" && computerSelection=="scissor")||
+            (playerSelection=="paper" && computerSelection=="rock") ||
+            ((playerSelection=="scissor"||playerSelection=="scissors")&&computerSelection=="paper") ){  
+
+            let winMsg = `You win! ${playerSelection} beats ${computerSelection}`;  
+            return winMsg; 
 
     }
-    else if(playerSelection=="paper"){
-        if(computerSelection=="rock"){
-            return "Paper beats rock! You win!";
-        }
-        else if(computerSelection=="paper"){
-            return `It's a tie!`;
-        }
-        else if(computerSelection=="scissor"||computerSelection=="scissors"){
-            return "Scissors beat paper! You lose!";
-        }
-    }    
-    else if(playerSelection=="scissor" || playerSelection=="scissors"){
-        if(computerSelection=="rock"){
-            return "Rock beats scissors! You lose!";
-        }
-        else if(computerSelection=="paper"){
-            return `Scissors beats paper! You win!`;
-        }
-        else if(computerSelection=="scissor"||computerSelection=="scissors"){
-            return `It's a tie`;
-        }
 
+    else if( (computerSelection=="rock" && playerSelection=="scissor")||
+             (computerSelection=="paper" && playerSelection=="rock") ||
+             ((computerSelection=="scissor"||playerSelection=="scissors")&&playerSelection=="paper") )  {
+
+            let loseMsg = `You lose! ${computerSelection} beats ${playerSelection}`;
+            return loseMsg;    
+    } 
+    else if (playerSelection==computerSelection){
+            let tieMsg= `It's a tie`;
+            return tieMsg;
+    }
     }   
-    else{
-        return "Invalid input"};
-}
 
 function game(){
     let computerScore=0, playerScore=0;
@@ -67,7 +49,7 @@ function game(){
         }
         else if(roundScore=="Paper beats rock! You lose!" || roundScore=="Scissors beat paper! You lose!" || roundScore=="Rock beats scissors! You lose!"){
             computerScore++;
-        }
+        }  
 
         alert("Your choice: "+ userChoice
         +"\nComputer Choice: " + randomElement
@@ -88,4 +70,7 @@ function game(){
     alert("Final Score\nYou: " + playerScore + "\nComputer: " + computerScore);
 }
 alert("Rock.Paper.Scissors. First to 5 wins!")
-game();
+//game();
+
+let userPick = prompt("enter choice:");
+alert(playRound(getComputerChoice(), userPick));
