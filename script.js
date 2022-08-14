@@ -53,8 +53,8 @@ let playRound =function(computerSelection,playerSelection){
 }
 
 function game(){
-    let computerScore=0, playerScore=0, counter=5;
-    for(let x=0;x<6;x++){
+    let computerScore=0, playerScore=0;
+    for(let x=0;x<20;x++){
 
         let userChoice=prompt("Rock, Paper or Scissor?").toLowerCase();
         let randomElement=getComputerChoice();
@@ -68,25 +68,24 @@ function game(){
         else if(roundScore=="Paper beats rock! You lose!" || roundScore=="Scissors beat paper! You lose!" || roundScore=="Rock beats scissors! You lose!"){
             computerScore++;
         }
+
         alert("Your choice: "+ userChoice
         +"\nComputer Choice: " + randomElement
         + "\n" + roundScore
         + "\nComputer score: " + computerScore
         + "         Your Score: " + playerScore
-        + "\nRounds left: " + counter
         );
-    
-    counter--;
+        if(playerScore==5){
+            alert("You win the whole game!");
+            break;
+        }
+        else if(computerScore==5){
+            alert("You lose the whole game!");
+            break;
+        }
     }
-    if(playerScore>computerScore){
-        alert("You win the whole game!");
-    }
-    else if(computerScore>playerScore){
-        alert("You lose the whole game!");
-    }
-    else{
-        alert("It's a tie");
-    }
+
     alert("Final Score\nYou: " + playerScore + "\nComputer: " + computerScore);
 }
+alert("Rock.Paper.Scissors. First to 5 wins!")
 game();
