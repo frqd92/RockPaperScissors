@@ -64,6 +64,20 @@ i{
     background: none;
     border: none;
 }
+
+/* -------Animations------- */
+
+.fa-solid{
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
+}
+.fa-solid.fade {
+    opacity:0;
+  
+}
+
+
+
 /* ----------------------------------------------------------- */
 
 

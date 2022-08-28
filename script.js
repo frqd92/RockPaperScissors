@@ -18,7 +18,6 @@ function userSelection (){
     if(this===buttons[2]){
         userChoice = "scissor";
     }  
-
     game(userChoice);
 
   
@@ -37,7 +36,7 @@ let cScoreNum = parseInt(cScore.innerHTML);
 let randomElement = computerSelection();
 let roundScore=playRound(randomElement,userC);
 let dashthing=document.getElementById("dashthing");
-
+fade(userChoice, randomElement);
 if(roundScore === 1){
     pScoreNum++;
     pScore.innerHTML=pScoreNum;
@@ -57,7 +56,6 @@ if(pScoreNum >= 5 || cScoreNum >= 5){
         displayPara.textContent="You lost... Click below to play again."       
     }
 
-
     let scoreContainer = document.querySelector(".results-box");
     pScore.innerHTML="";
     cScore.innerHTML="";
@@ -66,7 +64,7 @@ if(pScoreNum >= 5 || cScoreNum >= 5){
     playAgainBtn.classList.add("playAgainActive")
     scoreContainer.appendChild(playAgainBtn);
     playAgainBtn.textContent="Play Again?";
-
+  
     playAgainBtn.addEventListener("click", ()=>{
         pScore.innerHTML="0";
         cScore.innerHTML="0";
@@ -80,6 +78,24 @@ if(pScoreNum >= 5 || cScoreNum >= 5){
 }
 }
 
+
+function removeEventListeners(){
+    
+}
+
+
+//fade function
+function fade(userChoice,randomElement) {
+    let myLogos = document.querySelectorAll(".fa-solid");
+    let currentUserLogo = "";
+    if(userChoice==="rock"){
+       myLogos[0].classList.toggle("fade");
+
+    }
+
+
+
+}
 
 // computer random selection
 function computerSelection(){
