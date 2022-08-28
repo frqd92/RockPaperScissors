@@ -1,12 +1,58 @@
 <!DOCTYPE html>
 <head>
     <title></title>
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
     <meta charset="utf-8">
+    <script src="https://kit.fontawesome.com/5e0283adb8.js" crossorigin="anonymous"></script>
+
 </head>
 
+<h1>ROCK PAPER SCISSORS</h1>
 
 
+
+
+
+<div id="main-container">
+
+    <div class="outer-box">
+    <p class="info-user">Select Your Weapon</p>
+    <div class="player-box Box">
+        <button class="btnPlayer rock"><i class="fa-solid fa-hand-back-fist"></i></button>
+        <button class="btnPlayer paper"><i class="fa-solid fa-hand"></i></button>
+        <button class="btnPlayer scissors"><i class="fa-solid fa-hand-scissors"></i></button>
+    </div>
+    </div>
+
+    <div class="arena-container">
+        <h2>Arena</h2>
+        <div id="arena">
+            <div id="playerSide"></div>
+            <div id="computerSide"></div>
+        </div>
+    </div>
+
+    <div class="outer-box">
+    <p class="info-computer">Computer</p>
+    <div class="computer-box Box">
+        <button class="btnComputer rock"><i class="fa-solid fa-hand-back-fist"></i></button>
+        <button class="btnComputer paper"><i class="fa-solid fa-hand"></i></button>
+        <button class="btnComputer scissors"><i class="fa-solid fa-hand-scissors"></i></button>
+    </div>
+</div>
+</div>
+
+<div id="bottom-container">
+    <div class="results-box">
+        <div id="player-score">0</div>
+                        -
+        <div id="computer-score">0</div>
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
 <body>
 
 </body>
