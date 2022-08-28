@@ -32,6 +32,10 @@ h1{
     color: white;
     text-align: center;
 }
+h3{
+    color:white;
+    margin-top: -80px;
+}
 /* ----------------------------------------------------------- */
 #main-container{
 
@@ -54,27 +58,15 @@ h1{
     align-items: center;
 }
 i{
-
     font-size: 85px;
 }
-button{
+.btnPlayer,.btnComputer {
     background: none;
     border: none;
 }
 /* ----------------------------------------------------------- */
 
-.results-box{
-    background: white;
-    border-radius: 15px;
-    width: 250px;
-    display: flex;
-    height:100px;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 70px;
-    padding:0px 30px;
 
-}
 .arena-container{
     color:grey;
     font-weight: bold;
@@ -87,29 +79,75 @@ button{
     border:1px solid white;
    margin-top: 45px;
     display:flex;
+    border-radius: 35px;
     width: 300px;
     height:150px;
 }
 #playerSide{
     width:150px;
     height:150px;
-    border: 1px solid red;
+    border: 1px solid grey;
+    border-radius: 35px 0 0 35px ;
 }
 #computerSide{
     width:150px;
     height:150px;
-    border: 1px solid red;
+    border: 1px solid grey;
+    border-radius: 0px 35px 35px 0px ;
 }
 
+/* --------------------------------------- */
+#commentary{
+  
+    width:900px;
+    height: 40px;
+}
 
 #bottom-container{
+
     display:flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width:500px;
     height:250px;
 
 }
 
+.results-box{
+    margin-top: -150px;
+    background: white;
+    border-radius: 15px;
+    width: 250px;
+    display: flex;
+    height:100px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 70px;
+    padding:0px 30px;
+}
 
+
+.playAgainActive{
+
+    font-size: 28px;
+    border:none;
+    color: black;
+    background: white;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5), 
+    0px 2px 4px rgba(0, 0, 0, 0.5), 
+    0px 4px 8px rgba(0, 0, 0, 0.5), 
+    0px 8px 16px rgba(0, 0, 0, 0.5);
+    
+} 
+
+.playAgainActive:active{
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5), 
+    0px 1px 1px rgba(0, 0, 0, 0.5), 
+    0px 2px 2px rgba(0, 0, 0, 0.5), 
+    0px 3px 2px rgba(0, 0, 0, 0.5);
+}
+
+.commentary-text{
+    color:white;
+}

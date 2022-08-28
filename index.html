@@ -8,24 +8,20 @@
 </head>
 
 <h1>ROCK PAPER SCISSORS</h1>
-
-
-
-
-
+<h3>First to 5 points wins the game</h3>
 <div id="main-container">
 
     <div class="outer-box">
-    <p class="info-user">Select Your Weapon</p>
+    <p class="info-user">Player</p>
     <div class="player-box Box">
-        <button class="btnPlayer rock"><i class="fa-solid fa-hand-back-fist"></i></button>
-        <button class="btnPlayer paper"><i class="fa-solid fa-hand"></i></button>
-        <button class="btnPlayer scissors"><i class="fa-solid fa-hand-scissors"></i></button>
+        <button class="btnPlayer rock btns"><i class="fa-solid fa-hand-back-fist"></i></button>
+        <button class="btnPlayer paper btns"><i class="fa-solid fa-hand"></i></button>
+        <button class="btnPlayer scissors btns"><i class="fa-solid fa-hand-scissors"></i></button>
     </div>
     </div>
 
     <div class="arena-container">
-        <h2>Arena</h2>
+        <h2>vs</h2>
         <div id="arena">
             <div id="playerSide"></div>
             <div id="computerSide"></div>
@@ -41,11 +37,14 @@
     </div>
 </div>
 </div>
+<div id="commentary">
+<p class="commentary-text"></p>
+</div>
 
 <div id="bottom-container">
     <div class="results-box">
         <div id="player-score">0</div>
-                        -
+                <span id="dashthing">-</span>
         <div id="computer-score">0</div>
     </div>
 

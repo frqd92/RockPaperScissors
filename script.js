@@ -2,6 +2,8 @@
 
 const buttons =document.querySelectorAll(".btnPlayer");
 let userChoice = "";
+let displayPara = document.querySelector(".commentary-text");
+selectionLoop();
 // User buttons
 function userSelection (){
 
@@ -21,9 +23,11 @@ function userSelection (){
 
   
 }
-buttons.forEach((button) => {
-    button.addEventListener("click", userSelection);
-})
+function selectionLoop (){
+    buttons.forEach((button) => {
+        button.addEventListener("click", userSelection);
+    })
+}
 
 function game (userC){
 let pScore = document.getElementById("player-score");
@@ -32,9 +36,7 @@ let cScore = document.getElementById("computer-score");
 let cScoreNum = parseInt(cScore.innerHTML);
 let randomElement = computerSelection();
 let roundScore=playRound(randomElement,userC);
-
-
-console.log("score" + roundScore);
+let dashthing=document.getElementById("dashthing");
 
 if(roundScore === 1){
     pScoreNum++;
@@ -44,13 +46,38 @@ else if(roundScore === 2){
     cScoreNum++;
     cScore.innerHTML=cScoreNum;
 }
-if(pScoreNum === 5 || cScoreNum === 5){
-    let scoreDisplay = document.getElementsByClassName("results-box");
-    scoreDisplay.classList.add("colors");
-    
+if(pScoreNum >= 5 || cScoreNum >= 5){
+    buttons.forEach((button) => {                   //removes the click listener so it stops clicks between round finish and play again
+        button.removeEventListener("click", userSelection);
+    })
+    if(pScoreNum>cScoreNum){
+        displayPara.textContent="You won! Click below to play again."
+    }
+    else{
+        displayPara.textContent="You lost... Click below to play again."       
+    }
+
+
+    let scoreContainer = document.querySelector(".results-box");
+    pScore.innerHTML="";
+    cScore.innerHTML="";
+    dashthing.innerHTML="";
+    let playAgainBtn = document.createElement("button");
+    playAgainBtn.classList.add("playAgainActive")
+    scoreContainer.appendChild(playAgainBtn);
+    playAgainBtn.textContent="Play Again?";
+
+    playAgainBtn.addEventListener("click", ()=>{
+        pScore.innerHTML="0";
+        cScore.innerHTML="0";
+        dashthing.innerHTML="-";
+        pScore=0;cScore=0;pScoreNum=0;cScoreNum=0;
+        playAgainBtn.style.display="none";
+        displayPara.textContent="";
+        selectionLoop();
+    })
+
 }
-
-
 }
 
 
@@ -71,44 +98,25 @@ function computerSelection(){
 //each round
 let playRound =function(computerSelection,playerSelection){
 
+
     if(     (playerSelection=="rock" && computerSelection=="scissor")||
             (playerSelection=="paper" && computerSelection=="rock") ||
             (playerSelection=="scissor"&&computerSelection=="paper") ){  
+            displayPara.textContent=`${playerSelection} beats ${computerSelection}... good job`;
             return 1; 
     }
 
     else if( (computerSelection=="rock" && playerSelection=="scissor")||
              (computerSelection=="paper" && playerSelection=="rock") ||
              (computerSelection=="scissor"&&playerSelection=="paper") )  {
+                displayPara.textContent=`tough luck... ${computerSelection} beats ${playerSelection}`;
             return 2;    
     } 
 
     else if (playerSelection==computerSelection){
+        displayPara.textContent="it's a tie...";
             return 3;
     }
 }; 
 
-/*
-for(let x=0;x<5;x++){
 
-    if(roundScore==1){
-          playerScore++;
-          console.log(`You win! ${userC} beats ${randomElement} `);
-      }
-      else if(roundScore==2){
-          computerScore++;
-          console.log(`You lose! ${userC} beats ${userChoice}`);
-      }  
-      else if(roundScore==3){
-          //tieScore++;
-          console.log(`Tie!`);
-      }
-      if(playerScore==5){
-          console.log("You win the whole game!");
-          break;
-      }
-      else if(computerScore==5){
-          console.log("You lose the whole game!");
-          break;
-      }
-  }*/
