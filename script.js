@@ -2,12 +2,13 @@
 
 const buttons =document.querySelectorAll(".btnPlayer");
 let userChoice = "";
-let myLogos = document.querySelectorAll(".fi-iden");
 let displayPara = document.querySelector(".commentary-text");
 let whoWon;
 let allBtns = document.querySelectorAll(".fi-iden");
+let allBtnss = document.querySelectorAll(".btns");
 let boxes = document.querySelectorAll(".Box");
-
+let resultMsgP = document.createElement("h2");
+let resultMsgC = document.createElement("h2");
  selectionLoop();
 // // User buttons
 function userSelection (){
@@ -28,7 +29,7 @@ function userSelection (){
   
 }
 function selectionLoop (){
-    myLogos.forEach((logo)=>{
+    allBtns.forEach((logo)=>{
         logo.classList.remove("fade");
     })
 
@@ -55,7 +56,7 @@ else if(roundScore === 2){
     cScoreNum++;
     cScore.innerHTML=cScoreNum;
 }
-if(pScoreNum >= 1 || cScoreNum >= 1){
+if(pScoreNum >= 3 || cScoreNum >= 3){
   
     if(pScoreNum>cScoreNum){
         displayPara.textContent="You won! Click below to play again."
@@ -82,6 +83,7 @@ if(pScoreNum >= 1 || cScoreNum >= 1){
         pScore=0;cScore=0;pScoreNum=0;cScoreNum=0;
         playAgainBtn.style.display="none";
         displayPara.textContent="";
+        allBtnss[0].style.display="contents";
         removeResultMsg();
         //selectionLoop();
     })
@@ -90,42 +92,19 @@ if(pScoreNum >= 1 || cScoreNum >= 1){
 }
 }
 function removeResultMsg(){
+    resultMsgC.textContent="";
+    resultMsgP.textContent="";
 
-    for(let x=0;x<boxes.length;x++){
-    boxes[x].innerHTML="";
+    for(let x=0;x<6;x++){
+        allBtnss[x].style.visibility="visible";
+    
     }
-    for(let x=0;x<allBtns.length;x++){
-
-       // console.log(allBtns[x].style);
-  
-
-    }
-  
 }
 function resultMsg(){
-let resultMsgP = document.createElement("h2");
-let resultMsgC = document.createElement("h2");
 
 
-console.log(allBtns[2].classList);
-allBtns[3].classList.remove("fi-iden");
-console.log(allBtns[3].classList);
-
-for(let x=0;x<allBtns.length;x++){
-
-    //buttons[0].classList.add("btnPlayerHidden");
-    // buttons[1].classList.add("btnPlayerHidden");
-    // buttons[2].classList.add("btnPlayerHidden");
-    // buttons[3].classList.add("btnComputerHidden");
-    // buttons[4].classList.add("btnPlayerHidden");
-    // buttons[5].classList.add("btnPlayerHidden");
- 
-
-    //allBtns[x].classList.remove("fi-iden");   
-    //allBtns[x].classList.add("fi-idenHidden");
-    //console.log(allBtns[x].classList);
-    //allBtns[x].style.visibility="hidden";
-    //console.log(allBtns[x].style);
+for(let x=0;x<6;x++){
+    allBtnss[x].style.visibility="hidden";
 
 }
 
@@ -178,8 +157,8 @@ function fade(userChoice,randomElement) {
         computerPick=5;
     }
 
-        myLogos[userPick].classList.add("fade");
-        myLogos[computerPick].classList.add("fade");
+        allBtns[userPick].classList.add("fade");
+        allBtns[computerPick].classList.add("fade");
         removeEventListeners(); //so user can't click on button while it's doing the fade effect
         setTimeout(selectionLoop, 1000);
 
