@@ -34,7 +34,7 @@ h1{
 }
 h3{
     color:white;
-    margin-top: -80px;
+    margin-top: -60px;
 }
 /* ----------------------------------------------------------- */
 #main-container{
@@ -57,25 +57,54 @@ h3{
     justify-content: space-evenly;
     align-items: center;
 }
-i{
+i, .fa-arena{
     font-size: 85px;
 }
+
 .btnPlayer,.btnComputer {
     background: none;
     border: none;
 }
 
+.result-msg{
+    position: absolute;
+    color:red;
+    font-size: 125px;
+    
+ 
+}
+
 /* -------Animations------- */
 
-.fa-solid{
+.fi-iden{
     opacity: 1;
-    transition: opacity 2s ease-in-out;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
-.fa-solid.fade {
+.fi-iden.fade {
     opacity:0;
   
 }
 
+
+/* Arena icons */
+
+
+
+.fi-arena{
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fi-arena.fadein{
+    opacity:1;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+}
 
 
 /* ----------------------------------------------------------- */
@@ -96,8 +125,12 @@ i{
     border-radius: 35px;
     width: 300px;
     height:150px;
+    color:white;
 }
 #playerSide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width:150px;
     height:150px;
     border: 1px solid grey;

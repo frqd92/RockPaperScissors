@@ -2,9 +2,14 @@
 
 const buttons =document.querySelectorAll(".btnPlayer");
 let userChoice = "";
+let myLogos = document.querySelectorAll(".fi-iden");
 let displayPara = document.querySelector(".commentary-text");
-selectionLoop();
-// User buttons
+let whoWon;
+let allBtns = document.querySelectorAll(".fi-iden");
+let boxes = document.querySelectorAll(".Box");
+
+ selectionLoop();
+// // User buttons
 function userSelection (){
 
     if(this===buttons[0]){
@@ -23,6 +28,11 @@ function userSelection (){
   
 }
 function selectionLoop (){
+    myLogos.forEach((logo)=>{
+        logo.classList.remove("fade");
+    })
+
+ 
     buttons.forEach((button) => {
         button.addEventListener("click", userSelection);
     })
@@ -45,17 +55,17 @@ else if(roundScore === 2){
     cScoreNum++;
     cScore.innerHTML=cScoreNum;
 }
-if(pScoreNum >= 5 || cScoreNum >= 5){
-    buttons.forEach((button) => {                   //removes the click listener so it stops clicks between round finish and play again
-        button.removeEventListener("click", userSelection);
-    })
+if(pScoreNum >= 3 || cScoreNum >= 3){
+  
     if(pScoreNum>cScoreNum){
         displayPara.textContent="You won! Click below to play again."
+        whoWon=0;
     }
     else{
-        displayPara.textContent="You lost... Click below to play again."       
+        displayPara.textContent="You lost... Click below to play again."   
+        whoWon=1;    
     }
-
+  
     let scoreContainer = document.querySelector(".results-box");
     pScore.innerHTML="";
     cScore.innerHTML="";
@@ -64,7 +74,8 @@ if(pScoreNum >= 5 || cScoreNum >= 5){
     playAgainBtn.classList.add("playAgainActive")
     scoreContainer.appendChild(playAgainBtn);
     playAgainBtn.textContent="Play Again?";
-  
+    resultMsg();
+
     playAgainBtn.addEventListener("click", ()=>{
         pScore.innerHTML="0";
         cScore.innerHTML="0";
@@ -72,26 +83,84 @@ if(pScoreNum >= 5 || cScoreNum >= 5){
         pScore=0;cScore=0;pScoreNum=0;cScoreNum=0;
         playAgainBtn.style.display="none";
         displayPara.textContent="";
-        selectionLoop();
+        removeResultMsg();
+        //selectionLoop();
     })
 
+
 }
+}
+function removeResultMsg(){
+
+    for(let x=0;x<boxes.length;x++){
+    boxes[x].innerHTML="";
+    }
+    for(let x=0;x<allBtns.length;x++){
+
+    }
+  
+}
+function resultMsg(){
+let resultMsgP = document.createElement("h2");
+let resultMsgC = document.createElement("h2");
+console.log();
+for(let x=0;x<allBtns.length;x++){
+
+    allBtns[x].style.visibility="hidden";
 }
 
+    if(whoWon===0){
+        boxes[0].appendChild(resultMsgP);
+        resultMsgP.textContent="YOU";
+        resultMsgP.classList.add("result-msg");
+        boxes[1].appendChild(resultMsgC);
+        resultMsgC.textContent="WIN";
+        resultMsgC.classList.add("result-msg");
+    }
+    else if(whoWon===1){
+        boxes[0].appendChild(resultMsgP);
+        resultMsgP.textContent="YOU";
+        resultMsgP.classList.add("result-msg");
+        boxes[1].appendChild(resultMsgC);
+        resultMsgC.textContent="LOSE";
+        resultMsgC.classList.add("result-msg");
+    }
+    
+}
 
 function removeEventListeners(){
-    
+    buttons.forEach((button) => {                   //removes the click listener so it stops clicks between round finish and play again
+        button.removeEventListener("click", userSelection);
+    })
 }
 
 
 //fade function
 function fade(userChoice,randomElement) {
-    let myLogos = document.querySelectorAll(".fa-solid");
-    let currentUserLogo = "";
+    let userPick;
+    let computerPick;
+    let areaIcons = document.querySelectorAll(".fifucklife");
+ 
     if(userChoice==="rock"){
-       myLogos[0].classList.toggle("fade");
-
+        userPick=0;
+    
+    }else if(userChoice==="paper"){
+        userPick=1;
+       
+    }else if(userChoice==="scissor"){
+        userPick=2;
+    }if(randomElement==="rock"){
+        computerPick=3;
+    }else if(randomElement==="paper"){
+        computerPick=4;
+    }else if(randomElement==="scissor"){
+        computerPick=5;
     }
+
+        myLogos[userPick].classList.add("fade");
+        myLogos[computerPick].classList.add("fade");
+        removeEventListeners(); //so user can't click on button while it's doing the fade effect
+        setTimeout(selectionLoop, 1000);
 
 
 
@@ -112,7 +181,7 @@ function computerSelection(){
 };  
 
 //each round
-let playRound =function(computerSelection,playerSelection){
+function playRound(computerSelection,playerSelection){
 
 
     if(     (playerSelection=="rock" && computerSelection=="scissor")||
@@ -134,5 +203,6 @@ let playRound =function(computerSelection,playerSelection){
             return 3;
     }
 }; 
+
 
 
