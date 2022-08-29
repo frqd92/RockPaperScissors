@@ -9,6 +9,7 @@ let allBtnss = document.querySelectorAll(".btns");
 let boxes = document.querySelectorAll(".Box");
 let resultMsgP = document.createElement("h2");
 let resultMsgC = document.createElement("h2");
+let playerSide = document.getElementById("playerSide");
  selectionLoop();
 // // User buttons
 function userSelection (){
@@ -47,7 +48,8 @@ let cScoreNum = parseInt(cScore.innerHTML);
 let randomElement = computerSelection();
 let roundScore=playRound(randomElement,userC);
 let dashthing=document.getElementById("dashthing");
-fade(userChoice, randomElement);
+fadeIn(userChoice, randomElement);
+
 if(roundScore === 1){
     pScoreNum++;
     pScore.innerHTML=pScoreNum;
@@ -56,7 +58,7 @@ else if(roundScore === 2){
     cScoreNum++;
     cScore.innerHTML=cScoreNum;
 }
-if(pScoreNum >= 3 || cScoreNum >= 3){
+if(pScoreNum >= 5 || cScoreNum >= 5){
   
     if(pScoreNum>cScoreNum){
         displayPara.textContent="You won! Click below to play again."
@@ -129,10 +131,9 @@ function removeEventListeners(){
     })
 }
 //fade function
-function fade(userChoice,randomElement) {
+function fadeIn(userChoice,randomElement) {
     let userPick;
     let computerPick;
-    let arenaIcons = document.querySelectorAll(".fifucklife");
  
     if(userChoice==="rock"){
         userPick=0;
@@ -149,14 +150,53 @@ function fade(userChoice,randomElement) {
     }else if(randomElement==="scissor"){
         computerPick=5;
     }
-        allBtns[userPick].classList.add("fade");
-        allBtns[computerPick].classList.add("fade");
-        removeEventListeners(); //so user can't click on button while it's doing the fade effect
-        setTimeout(selectionLoop, 1000);
+
+  fadeFunc();
+
+    function fadeFunc(){
+        let rockIcon = document.createElement("div");
+        let paperIcon = document.createElement("div");
+        let scissorIcon = document.createElement("div");
+        let rockIconC = document.createElement("div");
+        let paperIconC = document.createElement("div");
+        let scissorIconC = document.createElement("div");
+        rockIcon.innerHTML=`<i class="fa-solid fa-hand-back-fist">`;
+        paperIcon.innerHTML=`<i class="fa-solid fa-hand">`;
+        scissorIcon.innerHTML=`<i class="fa-solid fa-hand-scissors">`;
+        rockIconC.innerHTML=`<i class="fa-solid fa-hand-back-fist">`;
+        paperIconC.innerHTML=`<i class="fa-solid fa-hand">`;
+        scissorIconC.innerHTML=`<i class="fa-solid fa-hand-scissors">`;
+  
+            if(userPick===0){
+                playerSide.appendChild(rockIcon);
+            }else if(userPick===1){
+                playerSide.appendChild(paperIcon);
+            }else if(userPick===2){
+                playerSide.appendChild(scissorIcon);
+            }
+            if(computerPick===3){
+                computerSide.appendChild(rockIconC);
+            }else if(computerPick===4){
+                computerSide.appendChild(paperIconC);
+            }else if(computerPick===5){
+                computerSide.appendChild(scissorIconC);
+            }
+
+            setTimeout(function(){
+                playerSide.innerHTML="";
+                computerSide.innerHTML="";
+            },1000)
+
+    }
+
+    allBtns[userPick].classList.add("fade");
+    allBtns[computerPick].classList.add("fade");
 
 
-
+    removeEventListeners(); //so user can't click on button while it's doing the fade effect
+    setTimeout(selectionLoop, 1000);
 }
+
 // computer random selection
 function computerSelection(){
     let random = Math.floor(Math.random()*3);
@@ -178,19 +218,27 @@ function playRound(computerSelection,playerSelection){
             (playerSelection=="paper" && computerSelection=="rock") ||
             (playerSelection=="scissor"&&computerSelection=="paper") ){  
             displayPara.textContent=`${playerSelection} beats ${computerSelection}... good job`;
+            setTimeout(fadePara,1800);
             return 1; 
     }
 
     else if( (computerSelection=="rock" && playerSelection=="scissor")||
              (computerSelection=="paper" && playerSelection=="rock") ||
              (computerSelection=="scissor"&&playerSelection=="paper") )  {
-                displayPara.textContent=`tough luck... ${computerSelection} beats ${playerSelection}`;
+            displayPara.textContent=`tough luck... ${computerSelection} beats ${playerSelection}`;
+            setTimeout(fadePara,1000);
             return 2;    
     } 
 
     else if (playerSelection==computerSelection){
-        displayPara.textContent="it's a tie...";
+            displayPara.textContent="it's a tie...";
+            setTimeout(fadePara,1000);
             return 3;
+    }        displayPara.classList.add("fadestuff");
+
+    function fadePara(){
+
+        displayPara.innerHTML="";
     }
 }
 

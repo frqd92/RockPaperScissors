@@ -84,7 +84,7 @@ i, .fa-arena{
     opacity: 1;
     -webkit-transition: opacity 0.3s ease-in-out;
     -moz-transition: opacity 0.3s ease-in-out;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
 }
 .fi-idenHidden{
     display: none;
@@ -99,19 +99,7 @@ i, .fa-arena{
 
 
 
-.fi-arena{
-    opacity: 0;
-    -webkit-transition: opacity 0.3s ease-in-out;
-    -moz-transition: opacity 0.3s ease-in-out;
-    transition: opacity 0.5s ease-in-out;
-}
 
-.fi-arena.fadein{
-    opacity:1;
-    -webkit-transition: opacity 0.3s ease-in-out;
-    -moz-transition: opacity 0.3s ease-in-out;
-    transition: opacity 0.5s ease-in-out;
-}
 
 
 /* ----------------------------------------------------------- */
@@ -126,7 +114,7 @@ i, .fa-arena{
     align-items: center;
 }
 #arena{
-    border:1px solid white;
+
    margin-top: 45px;
     display:flex;
     border-radius: 35px;
@@ -140,7 +128,7 @@ i, .fa-arena{
     align-items: center;
     width:150px;
     height:150px;
-    border: 1px solid grey;
+    border: 1px solid grey; 
     border-radius: 35px 0 0 35px ;
 }
 #computerSide{
@@ -149,7 +137,7 @@ i, .fa-arena{
     align-items: center;
     width:150px;
     height:150px;
-    border: 1px solid grey;
+    border: 1px solid grey; 
     border-radius: 0px 35px 35px 0px ;
 }
 
@@ -207,4 +195,14 @@ i, .fa-arena{
 
 .commentary-text{
     color:white;
+}
+
+.displayPara{
+    opacity: 1;
+
+    transition: opacity 1s ease-in-out;
+}
+.displayPara.fadestuff{
+    opacity:0;
+
 }
