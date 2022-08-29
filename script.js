@@ -11,14 +11,17 @@ let resultMsgP = document.createElement("h2");
 let resultMsgC = document.createElement("h2");
 let playerSide = document.getElementById("playerSide");
 let resultBox = document.querySelector(".results-box");
-
+let disMsg=document.querySelector(".disappearingMsg");
  selectionLoop();
 
-
+let compBox = document.querySelector(".computer-box");
+compBox.addEventListener("click", ()=>{
+    disMsg.classList.remove("disMsgClass");
+})
 
 //disappearing message
 function alertMsg(){
-let disMsg=document.querySelector(".disappearingMsg");
+
 disMsg.classList.add("disMsgClass");
 
 }
@@ -81,11 +84,11 @@ else if(roundScore === 2){
  
 
     if(pScoreNum>cScoreNum){
-        endMsg.textContent="You won! Click below to play again."
+        endMsg.textContent="You won! Click below to play again.";
         whoWon=0;
     }
     else{
-        endMsg.textContent="You lost... Click below to play again."   
+        endMsg.textContent="You lost... Click below to play again.";   
         whoWon=1;    
     }
     let scoreContainer = document.querySelector(".results-box");
