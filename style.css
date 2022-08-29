@@ -144,6 +144,9 @@ i, .fa-arena{
     border-radius: 35px 0 0 35px ;
 }
 #computerSide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width:150px;
     height:150px;
     border: 1px solid grey;

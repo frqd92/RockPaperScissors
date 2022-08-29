@@ -101,14 +101,10 @@ function removeResultMsg(){
     }
 }
 function resultMsg(){
+    for(let x=0;x<6;x++){
+        allBtnss[x].style.visibility="hidden";
 
-
-for(let x=0;x<6;x++){
-    allBtnss[x].style.visibility="hidden";
-
-}
-
-
+    }
     if(whoWon===0){
         boxes[0].appendChild(resultMsgP);
         resultMsgP.textContent="YOU";
@@ -125,7 +121,6 @@ for(let x=0;x<6;x++){
         resultMsgC.textContent="LOSE";
         resultMsgC.classList.add("result-msg");
     }
-    
 }
 
 function removeEventListeners(){
@@ -133,13 +128,11 @@ function removeEventListeners(){
         button.removeEventListener("click", userSelection);
     })
 }
-
-
 //fade function
 function fade(userChoice,randomElement) {
     let userPick;
     let computerPick;
-    let areaIcons = document.querySelectorAll(".fifucklife");
+    let arenaIcons = document.querySelectorAll(".fifucklife");
  
     if(userChoice==="rock"){
         userPick=0;
@@ -156,7 +149,6 @@ function fade(userChoice,randomElement) {
     }else if(randomElement==="scissor"){
         computerPick=5;
     }
-
         allBtns[userPick].classList.add("fade");
         allBtns[computerPick].classList.add("fade");
         removeEventListeners(); //so user can't click on button while it's doing the fade effect
@@ -165,7 +157,6 @@ function fade(userChoice,randomElement) {
 
 
 }
-
 // computer random selection
 function computerSelection(){
     let random = Math.floor(Math.random()*3);
@@ -178,8 +169,7 @@ function computerSelection(){
     else if(random==2){
         return "scissor";
     }
-};  
-
+}
 //each round
 function playRound(computerSelection,playerSelection){
 
@@ -202,7 +192,7 @@ function playRound(computerSelection,playerSelection){
         displayPara.textContent="it's a tie...";
             return 3;
     }
-}; 
+}
 
 
 
