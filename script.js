@@ -55,7 +55,7 @@ else if(roundScore === 2){
     cScoreNum++;
     cScore.innerHTML=cScoreNum;
 }
-if(pScoreNum >= 3 || cScoreNum >= 3){
+if(pScoreNum >= 1 || cScoreNum >= 1){
   
     if(pScoreNum>cScoreNum){
         displayPara.textContent="You won! Click below to play again."
@@ -65,7 +65,6 @@ if(pScoreNum >= 3 || cScoreNum >= 3){
         displayPara.textContent="You lost... Click below to play again."   
         whoWon=1;    
     }
-  
     let scoreContainer = document.querySelector(".results-box");
     pScore.innerHTML="";
     cScore.innerHTML="";
@@ -97,17 +96,39 @@ function removeResultMsg(){
     }
     for(let x=0;x<allBtns.length;x++){
 
+       // console.log(allBtns[x].style);
+  
+
     }
   
 }
 function resultMsg(){
 let resultMsgP = document.createElement("h2");
 let resultMsgC = document.createElement("h2");
-console.log();
+
+
+console.log(allBtns[2].classList);
+allBtns[3].classList.remove("fi-iden");
+console.log(allBtns[3].classList);
+
 for(let x=0;x<allBtns.length;x++){
 
-    allBtns[x].style.visibility="hidden";
+    //buttons[0].classList.add("btnPlayerHidden");
+    // buttons[1].classList.add("btnPlayerHidden");
+    // buttons[2].classList.add("btnPlayerHidden");
+    // buttons[3].classList.add("btnComputerHidden");
+    // buttons[4].classList.add("btnPlayerHidden");
+    // buttons[5].classList.add("btnPlayerHidden");
+ 
+
+    //allBtns[x].classList.remove("fi-iden");   
+    //allBtns[x].classList.add("fi-idenHidden");
+    //console.log(allBtns[x].classList);
+    //allBtns[x].style.visibility="hidden";
+    //console.log(allBtns[x].style);
+
 }
+
 
     if(whoWon===0){
         boxes[0].appendChild(resultMsgP);

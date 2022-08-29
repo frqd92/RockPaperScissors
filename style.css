@@ -65,13 +65,17 @@ i, .fa-arena{
     background: none;
     border: none;
 }
+.btnPlayerHidden{
+    display: none;
+}
+.btnComputerHidden{
+    display: none;
+}
 
 .result-msg{
     position: absolute;
     color:red;
     font-size: 125px;
-    
- 
 }
 
 /* -------Animations------- */
@@ -81,6 +85,9 @@ i, .fa-arena{
     -webkit-transition: opacity 0.3s ease-in-out;
     -moz-transition: opacity 0.3s ease-in-out;
     transition: opacity 0.5s ease-in-out;
+}
+.fi-idenHidden{
+    display: none;
 }
 .fi-iden.fade {
     opacity:0;
