@@ -17,12 +17,15 @@ let disMsg=document.querySelector(".disappearingMsg");
 let compBox = document.querySelector(".computer-box");
 compBox.addEventListener("click", ()=>{
     disMsg.classList.remove("disMsgClass");
+
 })
+
 
 //disappearing message
 function alertMsg(){
 
 disMsg.classList.add("disMsgClass");
+
 
 }
 
@@ -84,11 +87,11 @@ else if(roundScore === 2){
  
 
     if(pScoreNum>cScoreNum){
-        endMsg.textContent="You won! Click below to play again.";
+        endMsg.textContent="You won! Click the button below to play again.";
         whoWon=0;
     }
     else{
-        endMsg.textContent="You lost... Click below to play again.";   
+        endMsg.textContent="You lost... Click the button below to play again.";   
         whoWon=1;    
     }
     let scoreContainer = document.querySelector(".results-box");

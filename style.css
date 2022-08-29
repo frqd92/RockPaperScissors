@@ -5,15 +5,20 @@
     font-family: 'Courier New', Courier, monospace;
 }
 body{
+
     background-color: black;
     display: flex;
     height:100vh;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-
+    min-width: fit-content;
+    height:fit-content;
 }
-
+#headertop{
+    text-align: center;
+    margin-bottom: 100px;
+}
 .outer-box{
 
     color:white;
@@ -34,7 +39,7 @@ img{
     width:130px;
     height: auto;
     left:-590px;
-    top:210px;
+    top:250px;
     transform: rotate(230deg);
     animation:opacityAnime 2s infinite;
 }
@@ -49,8 +54,9 @@ img{
     font-family: 'Dancing Script', cursive;
     transform: rotate(-40deg);
     left:-680px;
-    top:86px;
+    top:130px;
     animation:opacityAnime 2s infinite;
+    
 }
 
 
@@ -60,11 +66,11 @@ p{
     font-size: 32px;
 }
 h1{
-
+ 
     font-size: 65px;
     color: rgb(187, 118, 15);
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 70px;
 }
 h3{
     color:white;
@@ -81,7 +87,7 @@ h2{
 
   display: flex;
   justify-content: center;
-
+margin-bottom: 100px;
   align-items: center;
   gap:100px;
   width: 100%;
@@ -161,15 +167,17 @@ h2{
 
 
 .arena-container{
+   
     color:white;
     font-weight: bold;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
 #arena{
-
+    border: 1px solid white;
     margin-top: 10px;
     display:flex;
     border-radius: 35px;
@@ -216,7 +224,7 @@ h2{
 }
 
 .results-box{
-    margin-top: -150px;
+    margin-top: -50px;
     background: white;
     border-radius: 15px;
     width: 250px;
