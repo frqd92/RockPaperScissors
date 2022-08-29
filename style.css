@@ -272,16 +272,27 @@ margin-bottom: 100px;
 
 }
 
-.flashingtext{
-    color:red;
-}
+
 /* got this online */
-.blinking{        
+.blinkingWin{        
     position: absolute;
 
-    animation:blinkingText 0.5s infinite;
+    animation:blinkingTextWin 0.5s infinite;
 }
-@keyframes blinkingText{
+@keyframes blinkingTextWin{
+    0%{     color:  rgb(92, 187, 15);    }
+    25%{    color: rgb(94, 118, 38); }
+    45%{color:rgb(60, 255, 0)}
+    60%{    color: transparent; }
+    90%{    color:transparent;  }
+    100%{   color: rgb(15, 187, 69);    }
+}
+.blinkingLose{        
+    position: absolute;
+
+    animation:blinkingTextLose 0.5s infinite;
+}
+@keyframes blinkingTextLose{
     0%{     color:  rgb(187, 118, 15);    }
     25%{    color: rgb(118, 52, 38); }
     45%{color:rgb(255, 42, 0)}

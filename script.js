@@ -12,27 +12,29 @@ let resultMsgC = document.createElement("h2");
 let playerSide = document.getElementById("playerSide");
 let resultBox = document.querySelector(".results-box");
 let disMsg=document.querySelector(".disappearingMsg");
+let compBox = document.querySelector(".computer-box");
  selectionLoop();
 
-let compBox = document.querySelector(".computer-box");
+
 compBox.addEventListener("click", ()=>{
     disMsg.classList.remove("disMsgClass");
+});
 
-})
 
 
 //disappearing message
 function alertMsg(){
-
 disMsg.classList.add("disMsgClass");
-
-
 }
 
 
 // // User buttons
 function userSelection (){
     alertMsg();
+    resultMsgP.classList.remove("blinkingWin");
+    resultMsgP.classList.remove("blinkingLose");
+    resultMsgC.classList.remove("blinkingWin");
+    resultMsgC.classList.remove("blinkingLose");
     if(this===buttons[0]){
         userChoice = "rock";
 
@@ -138,19 +140,19 @@ function resultMsg(){
     if(whoWon===0){
         boxes[0].appendChild(resultMsgP);
         resultMsgP.textContent="YOU";
-        resultMsgP.classList.add("blinking");
+        resultMsgP.classList.add("blinkingWin");
         boxes[1].appendChild(resultMsgC);
         resultMsgC.textContent="WIN";
-        resultMsgC.classList.add("blinking");
+        resultMsgC.classList.add("blinkingWin");
 
     }
     else if(whoWon===1){
         boxes[0].appendChild(resultMsgP);
         resultMsgP.textContent="YOU";
-        resultMsgP.classList.add("blinking");
+        resultMsgP.classList.add("blinkingLose");
         boxes[1].appendChild(resultMsgC);
         resultMsgC.textContent="LOSE";
-        resultMsgC.classList.add("blinking");
+        resultMsgC.classList.add("blinkingLose");
     }
 }
 
