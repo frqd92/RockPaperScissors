@@ -10,6 +10,7 @@ let boxes = document.querySelectorAll(".Box");
 let resultMsgP = document.createElement("h2");
 let resultMsgC = document.createElement("h2");
 let playerSide = document.getElementById("playerSide");
+let resultBox = document.querySelector(".results-box");
  selectionLoop();
 // // User buttons
 function userSelection (){
@@ -58,14 +59,21 @@ else if(roundScore === 2){
     cScoreNum++;
     cScore.innerHTML=cScoreNum;
 }
-if(pScoreNum >= 5 || cScoreNum >= 5){
-  
+  if(pScoreNum >= 1 || cScoreNum >= 1){
+    resultBox.style.background="black";
+    let endMsg = document.createElement("p");
+    let comBox = document.getElementById("commentary");
+    setTimeout(()=>{
+    comBox.appendChild(endMsg);
+   },1000);
+ 
+
     if(pScoreNum>cScoreNum){
-        displayPara.textContent="You won! Click below to play again."
+        endMsg.textContent="You won! Click below to play again."
         whoWon=0;
     }
     else{
-        displayPara.textContent="You lost... Click below to play again."   
+        endMsg.textContent="You lost... Click below to play again."   
         whoWon=1;    
     }
     let scoreContainer = document.querySelector(".results-box");
@@ -87,6 +95,8 @@ if(pScoreNum >= 5 || cScoreNum >= 5){
         displayPara.textContent="";
         allBtnss[0].style.display="contents";
         removeResultMsg();
+        comBox.removeChild(endMsg);
+        resultBox.style.background="white";
         //selectionLoop();
     })
 
@@ -110,18 +120,19 @@ function resultMsg(){
     if(whoWon===0){
         boxes[0].appendChild(resultMsgP);
         resultMsgP.textContent="YOU";
-        resultMsgP.classList.add("result-msg");
+        resultMsgP.classList.add("blinking");
         boxes[1].appendChild(resultMsgC);
         resultMsgC.textContent="WIN";
-        resultMsgC.classList.add("result-msg");
+        resultMsgC.classList.add("blinking");
+
     }
     else if(whoWon===1){
         boxes[0].appendChild(resultMsgP);
         resultMsgP.textContent="YOU";
-        resultMsgP.classList.add("result-msg");
+        resultMsgP.classList.add("blinking");
         boxes[1].appendChild(resultMsgC);
         resultMsgC.textContent="LOSE";
-        resultMsgC.classList.add("result-msg");
+        resultMsgC.classList.add("blinking");
     }
 }
 
@@ -166,9 +177,12 @@ function fadeIn(userChoice,randomElement) {
         rockIconC.innerHTML=`<i class="fa-solid fa-hand-back-fist">`;
         paperIconC.innerHTML=`<i class="fa-solid fa-hand">`;
         scissorIconC.innerHTML=`<i class="fa-solid fa-hand-scissors">`;
-  
+        playerSide.classList.add("arenaIconStyle");
+        computerSide.classList.add("arenaIconStyle");
             if(userPick===0){
+             
                 playerSide.appendChild(rockIcon);
+
             }else if(userPick===1){
                 playerSide.appendChild(paperIcon);
             }else if(userPick===2){
@@ -176,6 +190,7 @@ function fadeIn(userChoice,randomElement) {
             }
             if(computerPick===3){
                 computerSide.appendChild(rockIconC);
+
             }else if(computerPick===4){
                 computerSide.appendChild(paperIconC);
             }else if(computerPick===5){
@@ -218,7 +233,7 @@ function playRound(computerSelection,playerSelection){
             (playerSelection=="paper" && computerSelection=="rock") ||
             (playerSelection=="scissor"&&computerSelection=="paper") ){  
             displayPara.textContent=`${playerSelection} beats ${computerSelection}... good job`;
-            setTimeout(fadePara,1800);
+            setTimeout(fadePara,1000);
             return 1; 
     }
 
@@ -234,7 +249,8 @@ function playRound(computerSelection,playerSelection){
             displayPara.textContent="it's a tie...";
             setTimeout(fadePara,1000);
             return 3;
-    }        displayPara.classList.add("fadestuff");
+    }        
+    displayPara.classList.add("fadestuff");
 
     function fadePara(){
 
