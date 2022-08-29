@@ -11,10 +11,22 @@ let resultMsgP = document.createElement("h2");
 let resultMsgC = document.createElement("h2");
 let playerSide = document.getElementById("playerSide");
 let resultBox = document.querySelector(".results-box");
+
  selectionLoop();
+
+
+
+//disappearing message
+function alertMsg(){
+let disMsg=document.querySelector(".disappearingMsg");
+disMsg.classList.add("disMsgClass");
+
+}
+
+
 // // User buttons
 function userSelection (){
-
+    alertMsg();
     if(this===buttons[0]){
         userChoice = "rock";
 
@@ -59,7 +71,7 @@ else if(roundScore === 2){
     cScoreNum++;
     cScore.innerHTML=cScoreNum;
 }
-  if(pScoreNum >= 1 || cScoreNum >= 1){
+  if(pScoreNum >= 5 || cScoreNum >= 5){
     resultBox.style.background="black";
     let endMsg = document.createElement("p");
     let comBox = document.getElementById("commentary");

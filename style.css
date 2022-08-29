@@ -11,6 +11,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+
 }
 
 .outer-box{
@@ -19,6 +20,40 @@ body{
     display: flex;
     flex-direction: column; 
 }
+
+.disMsgClass{
+    visibility: hidden;
+    transition: visibility 0s ease-in-out;
+
+}
+
+
+img{
+    color:white;
+    position:relative;
+    width:130px;
+    height: auto;
+    left:-590px;
+    top:210px;
+    transform: rotate(230deg);
+    animation:opacityAnime 2s infinite;
+}
+@keyframes opacityAnime{
+    0%{opacity: 1;}
+    50%{opacity: 0.5;}
+    100%{opacity: 0;}
+}
+.disMsg{
+    position: relative;
+    color:white;
+    font-family: 'Dancing Script', cursive;
+    transform: rotate(-40deg);
+    left:-680px;
+    top:86px;
+    animation:opacityAnime 2s infinite;
+}
+
+
 
 p{
     text-align: center;
@@ -29,6 +64,7 @@ h1{
     font-size: 65px;
     color: rgb(187, 118, 15);
     text-align: center;
+    margin-bottom: 20px;
 }
 h3{
     color:white;
@@ -45,6 +81,7 @@ h2{
 
   display: flex;
   justify-content: center;
+
   align-items: center;
   gap:100px;
   width: 100%;
@@ -60,6 +97,9 @@ h2{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+}
+.player-box{
+    position: relative;
 }
 .arenaIconStyle{
     font-size: 82px;
@@ -130,7 +170,7 @@ h2{
 }
 #arena{
 
-   margin-top: 10px;
+    margin-top: 10px;
     display:flex;
     border-radius: 35px;
     width: 300px;
